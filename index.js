@@ -3,4 +3,6 @@ module.exports = async function myFunction(context, req) {
     status: 200,
     body: "Hello, world!"
   };
+
+  console.log("Function response:", context.res.body);
 };

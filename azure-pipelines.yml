@@ -33,8 +33,16 @@ stages:
             displayName: 'Install Dependencies for Test Stage'
 
           - script: |
-              npx jest
+              echo "Running tests with verbose output..."
+              npx jest --verbose
             displayName: 'Run Tests'
+
+          - script: |
+              echo "Checking node_modules..."
+              ls -l node_modules/
+              echo "Checking installed jest version..."
+              npx jest --version
+            displayName: 'Verify Installed Dependencies'
 
   - stage: Deploy
     displayName: 'Deploy to Azure'
