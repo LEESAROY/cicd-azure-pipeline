@@ -20,6 +20,14 @@ stages:
               npm run build
             displayName: 'Run Build Step'
 
+          - script: |
+              zip -r $(Build.ArtifactStagingDirectory)/function-app.zip .
+            displayName: 'Package Function App'
+
+          - publish: $(Build.ArtifactStagingDirectory)/function-app.zip
+            artifact: function-app
+            displayName: 'Publish Artifact'
+
   - stage: Test
     displayName: 'Test Stage'
     jobs:
@@ -33,20 +41,7 @@ stages:
             displayName: 'Install Dependencies for Test Stage'
 
           - script: |
-              echo "Checking if node_modules exists..."
-              ls -l node_modules/
-              echo "Checking installed jest version..."
-              npx jest --version
-            displayName: 'Verify Installed Dependencies'
-
-          - script: |
-              echo "Checking contents of index.js..."
-              cat index.js
-            displayName: 'Check index.js file'
-
-          - script: |
-              echo "Running tests with verbose output..."
-              npx jest --verbose
+              npx jest
             displayName: 'Run Tests'
 
   - stage: Deploy
@@ -61,4 +56,4 @@ stages:
             inputs:
               azureSubscription: 'leesa9019432'
               appName: 'leesa9019432'
-              package: '$(Build.ArtifactStagingDirectory)/**/*.zip'
+              package: '$(Build.ArtifactStagingDirectory)/function-app.zip'
