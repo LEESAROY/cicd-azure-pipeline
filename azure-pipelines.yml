@@ -52,8 +52,13 @@ stages:
         pool:
           vmImage: 'ubuntu-latest'
         steps:
+          - download: current
+            artifact: function-app
+            displayName: 'Download Artifact'
+
           - task: AzureFunctionApp@1
             inputs:
               azureSubscription: 'leesa9019432'
               appName: 'leesa9019432'
-              package: '$(Build.ArtifactStagingDirectory)/function-app.zip'
+              package: '$(Pipeline.Workspace)/function-app/function-app.zip'
+            displayName: 'Deploy Function to Azure'
