@@ -4,14 +4,10 @@ const myFunction = require('./index');
 describe('Azure Function HTTP Trigger', () => {
   it('should return status 200 and correct body', async () => {
     const req = httpMocks.createRequest();
-
     const res = httpMocks.createResponse();
+    const context = {};  
 
-    const context = {
-      res: res
-    };
-
-    await myFunction(context, req);
+    await myFunction(context, req, res);
 
     console.log("Test response:", res._getData());
 
