@@ -1,0 +1,9 @@
+{
+  "name": "my-function",
+  "version": "1.0.0",
+  "description": "Simple Azure Function in JavaScript",
+  "main": "index.js",
+  "dependencies": {
+    "azure-functions": "^3.0.0"
+  }
+}
