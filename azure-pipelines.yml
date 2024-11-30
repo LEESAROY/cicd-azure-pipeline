@@ -21,11 +21,7 @@ stages:
             displayName: 'Run Build Step'
 
           - script: |
-              ls -R $(Build.SourcesDirectory)
-            displayName: 'List directory contents before zipping'
-
-          - script: |
-              zip -r $(Build.ArtifactStagingDirectory)/function-app.zip * 
+              zip -r $(Build.ArtifactStagingDirectory)/function-app.zip .
             displayName: 'Package Function App'
 
           - publish: $(Build.ArtifactStagingDirectory)/function-app.zip
