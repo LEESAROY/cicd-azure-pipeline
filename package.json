@@ -1,9 +1,30 @@
 {
-  "name": "my-function",
+  "name": "azure-function-app",
   "version": "1.0.0",
-  "description": "Simple Azure Function in JavaScript",
+  "description": "A simple Azure Function App",
   "main": "index.js",
+  "scripts": {
+    "build": "echo 'No build step defined for now.'", 
+    "start": "func start",
+    "test": "echo 'No tests defined'"
+  },
   "dependencies": {
-    "azure-functions": "^3.0.0"
-  }
+    "azure-functions-core-tools": "^3.0.0",
+    "uuid": "^8.0.0"
+  },
+  "devDependencies": {},
+  "engines": {
+    "node": "16.x"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/LEESAROY/cicd-azure-pipeline"
+  },
+  "keywords": [
+    "azure",
+    "functions",
+    "node"
+  ],
+  "author": "Leesa",
+  "license": "MIT"
 }
