@@ -12,7 +12,9 @@ describe('Azure Function HTTP Trigger', () => {
 
     await myFunction(context, req, res);
 
-    console.log("Test response:", res._getData());
+    console.log("Full response object:", res);
+    console.log("Response body in res:", res._getData());
+    console.log("Context response body:", context.res ? context.res.body : 'No context response');
 
     expect(res.statusCode).toBe(200);
 
