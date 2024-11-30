@@ -1,13 +1,18 @@
 const httpMocks = require('node-mocks-http');
-const myFunction = require('./index');
+const myFunction = require('./index');  
 
 describe('Azure Function HTTP Trigger', () => {
   it('should return status 200 and correct body', async () => {
-
+    
     const req = httpMocks.createRequest();
     const res = httpMocks.createResponse();
 
-    await myFunction(req, res);
+    
+    const context = {
+      res: res,  
+    };
+
+    await myFunction(context, req);
 
     expect(res.statusCode).toBe(200);
 
